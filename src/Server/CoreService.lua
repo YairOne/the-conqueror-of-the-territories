@@ -59,4 +59,8 @@ function CoreService:GetCore(userId)
   return self.cores[userId]
 end
 
+function CoreService:RemoveCore(userId)
+  self.cores[userId] = nil
+end
+
 return CoreService

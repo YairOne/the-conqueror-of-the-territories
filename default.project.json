@@ -11,6 +11,11 @@
       "Server": {
         "$path": "src/Server"
       }
+    },
+    "StarterPlayer": {
+      "StarterPlayerScripts": {
+        "$path": "src/Client"
+      }
     }
   }
 }
