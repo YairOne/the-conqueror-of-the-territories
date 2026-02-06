@@ -10,6 +10,20 @@ local RemoteService = require(script.Parent.RemoteService)
 
 local GameService = {}
 
+local function moveCharacterToBase(player, character)
+  local spawnPart = MapService:GetPlayerSpawn(player)
+  if not spawnPart then
+    return
+  end
+
+  local root = character:WaitForChild("HumanoidRootPart", 5)
+  if not root then
+    return
+  end
+
+  character:PivotTo(spawnPart.CFrame + Vector3.new(0, 4, 0))
+end
+
 function GameService:Init()
   PlayerBaseService:Init()
   PentagonService:Init()
@@ -24,17 +38,26 @@ function GameService:Init()
     if base then
       MapService:AssignBaseToPlayer(player, base.id)
     end
+
+    player.CharacterAdded:Connect(function(character)
+      moveCharacterToBase(player, character)
+    end)
   end)
 
   Players.PlayerRemoving:Connect(function(player)
     MapService:ReleaseBaseFromPlayer(player)
     PlayerBaseService:ReleaseBase(player)
+    NpcService:ClearPlayerNpcs(player)
   end)
 
   for _, player in ipairs(Players:GetPlayers()) do
     local base = PlayerBaseService:AssignBase(player)
     if base then
       MapService:AssignBaseToPlayer(player, base.id)
+    end
+
+    if player.Character then
+      moveCharacterToBase(player, player.Character)
     end
   end
 end

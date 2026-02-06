@@ -46,4 +46,27 @@ Constants.NpcCatalog = {
   { id = "oracle_zero", name = "Oracle Zero", rarity = "SECRET" },
 }
 
+Constants.NpcVisuals = {
+  spear_guard = { color = Color3.fromRGB(88, 185, 255) },
+  slinger = { color = Color3.fromRGB(120, 200, 120) },
+  shieldbearer = { color = Color3.fromRGB(255, 204, 120) },
+  saboteur = { color = Color3.fromRGB(220, 120, 120) },
+  stormcaller = { color = Color3.fromRGB(160, 130, 255) },
+  crystal_knight = { color = Color3.fromRGB(190, 240, 255) },
+  void_marcher = { color = Color3.fromRGB(120, 120, 140) },
+  oracle_zero = { color = Color3.fromRGB(255, 120, 220) },
+}
+
+Constants.NpcAnimations = {
+  idle = "rbxassetid://507766666",
+}
+
+Constants.NpcSounds = {
+  spawn = "rbxassetid://911342077",
+}
+
+Constants.UiSounds = {
+  click = "rbxassetid://911342077",
+}
+
 return Constants

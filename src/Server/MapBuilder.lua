@@ -326,6 +326,19 @@ local function createBase(parent: Instance, baseId: number, position: Vector3, l
 	core:SetAttribute("MaxHealth", 1000)
 	core:SetAttribute("Health", 1000)
 
+	-- Player spawn
+	local playerSpawn = Instance.new("SpawnLocation")
+	playerSpawn.Name = "PlayerSpawn"
+	playerSpawn.Size = Vector3.new(12, 1.2, 12)
+	playerSpawn.CFrame = CFrame.new(position + Vector3.new(0, CONFIG.BasePlatformSize.Y + playerSpawn.Size.Y * 0.5, 0))
+	playerSpawn.Anchored = true
+	playerSpawn.Neutral = true
+	playerSpawn.Transparency = 1
+	playerSpawn.CanCollide = false
+	playerSpawn.Parent = baseModel
+	tag(playerSpawn, "PlayerSpawn")
+	playerSpawn:SetAttribute("BaseId", baseId)
+
 	-- Pads + Spawns folders
 	local padsFolder = ensureFolder(baseModel, "NpcPads")
 	local spawnsFolder = ensureFolder(baseModel, "NpcSpawns")
